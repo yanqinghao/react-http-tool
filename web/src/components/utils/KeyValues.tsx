@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import { Col, Form } from "react-bootstrap";
+import { Col, Form, Button } from "react-bootstrap";
 
 export default class KeyValues extends Component {
   render() {
     return (
       <Form>
+        <Button>del</Button>
         <Form.Row>
           <Col>
             <Form.Control placeholder="First name" />
