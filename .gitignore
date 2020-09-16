@@ -129,3 +129,4 @@ dmypy.json
 .pyre/
 web/package-lock.json
 web/yarn.lock
+tests
