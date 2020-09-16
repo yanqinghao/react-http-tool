@@ -2,17 +2,13 @@ import Link from 'next/link'
 import Layout from '../components/Layout'
 import RequestURL from '../components/RequestURL'
 import RequstType from '../components/RequstType'
+import RequestParams from '../components/RequestParams'
 
 const IndexPage = () => (
-  <Layout title="Home | Next.js + TypeScript Example">
-    <h1>Hello Next.js 👋</h1>
-    <RequestURL />
+  <Layout title="数据请求">
     <RequstType />
-    <p>
-      <Link href="/about">
-        <a>About</a>
-      </Link>
-    </p>
+    <RequestURL />
+    <RequestParams />
   </Layout>
 )
 

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, InputNumber } from "antd";
+import { Form, Input} from "antd";
 
 const FormItem = Form.Item;
 
@@ -7,17 +7,15 @@ export default class RequestURL extends Component {
   render() {
     return (
       <FormItem
-        label="Input Number"
+        label="请求链接"
         labelCol={{ span: 8 }}
         wrapperCol={{ span: 8 }}
       >
-        <InputNumber
+        <Input
           size="large"
-          min={1}
-          max={10}
-          style={{ width: 100 }}
-          defaultValue={3}
-          name="inputNumber"
+          style={{ width: 500 }}
+          placeholder="请输入请求URL"
+          name="inputURL"
         />
       </FormItem>
     );
