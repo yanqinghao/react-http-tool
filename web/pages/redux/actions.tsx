@@ -1,18 +1,22 @@
-import { ADD_TODO, TOGGLE_TODO, SET_FILTER } from "./actionTypes";
+import { ADD_CONFIG, SET_CONFIG, DEL_CONFIG } from "./actionTypes";
+import { ConfigType } from "./reducers/configs";
 
-let nextTodoId = 0;
+let nextConfigId = 0;
 
-export const addTodo = content => ({
-    type: ADD_TODO,
-    payload: {
-        id: ++nextTodoId,
-        content
-    }
+export const addConfig = (content: ConfigType) => ({
+  type: ADD_CONFIG,
+  payload: {
+    id: ++nextConfigId,
+    content,
+  },
 });
 
-export const toggleTodo = id => ({
-    type: TOGGLE_TODO,
-    payload: { id }
+export const setConfig = (id: number, content: ConfigType) => ({
+  type: SET_CONFIG,
+  payload: { id, content },
 });
 
-export const setFilter = filter => ({ type: SET_FILTER, payload: { filter } });
+export const delConfig = (id: number) => ({
+  type: DEL_CONFIG,
+  payload: { id },
+});

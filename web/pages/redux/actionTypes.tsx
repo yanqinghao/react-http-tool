@@ -1,3 +1,3 @@
-export const ADD_TODO = "ADD_TODO";
-export const TOGGLE_TODO = "TOGGLE_TODO";
-export const SET_FILTER = "SET_FILTER";
+export const ADD_CONFIG = "ADD_CONFIG";
+export const DEL_CONFIG = "DEL_CONFIG";
+export const SET_CONFIG = "SET_CONFIG";
