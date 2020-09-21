@@ -6,3 +6,8 @@ export interface KeyValueType {
 export interface KeyValueList {
   value: KeyValueType[];
 }
+
+export interface AuthType {
+  user: string;
+  password: string;
+}
