@@ -1,13 +1,12 @@
 import { ADD_CONFIG, SET_CONFIG, DEL_CONFIG } from "./actionTypes";
-import { ConfigType } from "./reducers/configs";
+import { ConfigType } from "../../utils/types";
 
 let nextConfigId = 0;
 
 export const addConfig = (content: ConfigType) => ({
   type: ADD_CONFIG,
   payload: {
-    id: ++nextConfigId,
-    content,
+    id: ++nextConfigId
   },
 });
 

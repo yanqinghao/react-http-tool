@@ -1,12 +1,12 @@
 import { Button } from 'antd'
 import React, { Component } from 'react'
-import RequestItem from './RequestItem'
+import AddItem from './AddItem'
 
 export default class RequestConfig extends Component {
     render() {
         return (
             <div>
-                <RequestItem />
+                <AddItem />
                 <Button>+</Button>
             </div>
         )

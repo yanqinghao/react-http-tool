@@ -11,9 +11,11 @@ export default function AddParam(props: KeyValueList) {
   return (
     <Form layout="vertical">
       <Button>增加</Button>
-      {props.value.map((i) => (
+      {props.values.map((i) => (
         <KeyValues key={0} name={i.name} value={i.value} />
       ))}
     </Form>
   );
 }
+
+AddParam.defaultProps = { values: [{ name: "", value: "" }] };

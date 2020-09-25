@@ -1,36 +1,7 @@
 import { ADD_CONFIG, DEL_CONFIG, SET_CONFIG } from "../actionTypes";
+import { StateConfigs } from "../../../utils/types";
 
-enum AuthType {
-  HTTPBasicAuth = "HTTPBasicAuth",
-  HTTPDigestAuth = "HTTPDigestAuth",
-  OAuth1 = "OAuth1",
-}
-
-interface KeyValueType {
-  key: string;
-  value: string;
-}
-
-export interface ConfigType {
-  id: number;
-  method: string;
-  url: string;
-  data?: KeyValueType[];
-  json?: KeyValueType[];
-  params?: KeyValueType[];
-  headers?: KeyValueType[];
-  cookies?: KeyValueType[];
-  auth?: AuthType;
-  user?: string;
-  password?: string;
-}
-
-interface stateConfigs {
-  allIds: number[];
-  configsbyId: ConfigType[];
-}
-
-const initialState: stateConfigs = {
+const initialState: StateConfigs = {
   allIds: [0],
   configsbyId: [
     {
@@ -44,17 +15,18 @@ const initialState: stateConfigs = {
 export default function (state = initialState, action: any) {
   switch (action.type) {
     case ADD_CONFIG: {
-      const { id, content } = action.payload;
+      const { id } = action.payload;
       return {
         ...state,
         allIds: [...state.allIds, id],
-        byIds: {
-          ...state.byIds,
-          [id]: {
-            content,
-            completed: false,
+        byIds: [
+          ...state.configsbyId,
+          {
+            id: 0,
+            method: "",
+            url: "",
           },
-        },
+        ],
       };
     }
     case SET_CONFIG: {

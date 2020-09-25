@@ -40,3 +40,5 @@ export default function AddAuth(props: AuthType) {
     </Form>
   );
 }
+
+AddAuth.defaultProps = { user: "", password: "" };
