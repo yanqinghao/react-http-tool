@@ -1,11 +1,13 @@
 import { ADD_CONFIG, DEL_CONFIG, SET_CONFIG } from "../actionTypes";
 import { StateConfigs } from "../../../utils/types";
+import { v4 as uuidv4 } from "uuid";
 
+let id = uuidv4();
 const initialState: StateConfigs = {
-  allIds: [0],
+  allIds: [id],
   configsbyId: [
     {
-      id: 0,
+      id: id,
       method: "",
       url: "",
     },

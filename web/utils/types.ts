@@ -22,7 +22,7 @@ export interface TypeString {
 }
 
 export interface ConfigType {
-  id: number;
+  id: string;
   method: string;
   url: string;
   data?: KeyValueType[];
@@ -36,6 +36,6 @@ export interface ConfigType {
 }
 
 export interface StateConfigs {
-  allIds: number[];
+  allIds: string[];
   configsbyId: ConfigType[];
 }

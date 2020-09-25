@@ -1,21 +1,20 @@
 import { ADD_CONFIG, SET_CONFIG, DEL_CONFIG } from "./actionTypes";
 import { ConfigType } from "../../utils/types";
+import { v4 as uuidv4 } from "uuid";
 
-let nextConfigId = 0;
-
-export const addConfig = (content: ConfigType) => ({
+export const addConfig = () => ({
   type: ADD_CONFIG,
   payload: {
-    id: ++nextConfigId
+    id: uuidv4(),
   },
 });
 
-export const setConfig = (id: number, content: ConfigType) => ({
+export const setConfig = (id: string, content: ConfigType) => ({
   type: SET_CONFIG,
   payload: { id, content },
 });
 
-export const delConfig = (id: number) => ({
+export const delConfig = (id: string) => ({
   type: DEL_CONFIG,
   payload: { id },
 });
