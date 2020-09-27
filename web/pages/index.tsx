@@ -5,9 +5,9 @@ import store from "./redux/store";
 
 const IndexPage = () => (
   <Provider store={store}>
-    <Layout title="数据请求">
+    {/* <Layout title="数据请求"> */}
       <RequestConfig />
-    </Layout>
+    {/* </Layout> */}
   </Provider>
 );
 

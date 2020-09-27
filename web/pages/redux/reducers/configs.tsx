@@ -1,59 +1,50 @@
 import { ADD_CONFIG, DEL_CONFIG, SET_CONFIG } from "../actionTypes";
-import { StateConfigs } from "../../../utils/types";
+import { StateConfigs, ConfigType } from "../../../utils/types";
 import { v4 as uuidv4 } from "uuid";
 
 let id = uuidv4();
 const initialState: StateConfigs = {
   allIds: [id],
-  configsbyId: [
-    {
-      id: id,
-      method: "",
-      url: "",
-    },
-  ],
+  configsbyId: {
+    [id]: {},
+  },
 };
 
-export default function (state = initialState, action: any) {
+export default function (
+  state = initialState,
+  action: { type: string; payload: { id: string; content?: ConfigType } }
+) {
   switch (action.type) {
     case ADD_CONFIG: {
       const { id } = action.payload;
       return {
         ...state,
         allIds: [...state.allIds, id],
-        byIds: [
+        configsbyId: {
           ...state.configsbyId,
-          {
-            id: 0,
-            method: "",
-            url: "",
-          },
-        ],
+          [id]: {},
+        },
       };
     }
     case SET_CONFIG: {
       const { id, content } = action.payload;
       return {
         ...state,
-        byIds: {
-          ...state.byIds,
-          [id]: {
-            ...state.byIds[id],
-            completed: !state.byIds[id].completed,
-          },
+        allIds: [...state.allIds],
+        configsbyId: {
+          ...state.configsbyId,
+          [id]: { ...state.configsbyId[id], content },
         },
       };
     }
     case DEL_CONFIG: {
       const { id } = action.payload;
+      const { [id]: _, ...filteredData } = state.configsbyId;
       return {
         ...state,
-        byIds: {
-          ...state.byIds,
-          [id]: {
-            ...state.byIds[id],
-            completed: !state.byIds[id].completed,
-          },
+        allIds: [...state.allIds.filter((item) => item !== id)],
+        configsbyId: {
+          ...filteredData,
         },
       };
     }

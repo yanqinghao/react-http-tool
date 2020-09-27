@@ -1,3 +1,5 @@
+import store from "../pages/redux/store";
+
 export interface KeyValueType {
   name: string;
   value: string;
@@ -22,9 +24,8 @@ export interface TypeString {
 }
 
 export interface ConfigType {
-  id: string;
-  method: string;
-  url: string;
+  method?: string;
+  url?: string;
   data?: KeyValueType[];
   json?: KeyValueType[];
   params?: KeyValueType[];
@@ -37,5 +38,7 @@ export interface ConfigType {
 
 export interface StateConfigs {
   allIds: string[];
-  configsbyId: ConfigType[];
+  configsbyId: { [id: string]: ConfigType };
 }
+
+export type AppDispatch = typeof store.dispatch;
