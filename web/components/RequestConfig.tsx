@@ -7,7 +7,7 @@ import { addConfig } from "../pages/redux/actions";
 
 interface PropsType {
   allIds: string[];
-  configsbyId?: { [id: string]: ConfigType };
+  configsbyId: { [id: string]: ConfigType };
   addConfig: () => void;
 }
 
@@ -23,7 +23,7 @@ class RequestConfig extends Component<PropsType> {
     return (
       <div>
         {this.props.allIds.map((i) => (
-          <AddItem key={i} id={i}/>
+          <AddItem key={i} id={i} config={this.props.configsbyId[i]} />
         ))}
         <Button onClick={this.handleAddConfig}>+</Button>
       </div>

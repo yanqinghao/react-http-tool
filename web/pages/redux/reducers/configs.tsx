@@ -33,7 +33,7 @@ export default function (
         allIds: [...state.allIds],
         configsbyId: {
           ...state.configsbyId,
-          [id]: { ...state.configsbyId[id], content },
+          [id]: { ...state.configsbyId[id], ...content },
         },
       };
     }

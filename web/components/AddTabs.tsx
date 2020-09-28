@@ -1,23 +1,41 @@
 import React from "react";
 import { Tabs } from "antd";
+import { connect } from "react-redux";
 import AddAuth from "./params/AddAuth";
 import AddParam from "./params/AddParam";
+import { ConfigType } from "../utils/types";
+import { setConfig } from "../pages/redux/actions";
 
 const { TabPane } = Tabs;
 
+interface PropsType {
+  id: string;
+  config: ConfigType;
+  // setConfig: (id: string, content: ConfigType) => void;
+}
 interface TabType {
   params: [];
   auths: [];
 }
-export default function AddTabs(props: TabType) {
+export default function AddTabs(props: PropsType) {
   return (
     <Tabs defaultActiveKey="1" tabPosition="left" size="large">
-      {["Header", "Data", "Json", "Params", "Cookies"].map((e, i) => (
+      {["header", "data", "json", "params", "cookies"].map((e, i) => (
         <TabPane tab={e} key={i}>
-          <AddParam />
+          {props.config.requestData === undefined ? (
+            <AddParam id={props.id} type={e} />
+          ) : props.config.requestData[e] === undefined ? (
+            <AddParam id={props.id} type={e} />
+          ) : (
+            <AddParam
+              id={props.id}
+              type={e}
+              data={props.config.requestData[e]}
+            />
+          )}
         </TabPane>
       ))}
-      <TabPane tab="Authorization" key="6">
+      <TabPane tab="authorization" key="6">
         <AddAuth />
       </TabPane>
     </Tabs>

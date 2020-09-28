@@ -41,4 +41,4 @@ export default function AddAuth(props: AuthType) {
   );
 }
 
-AddAuth.defaultProps = { user: "", password: "" };
+AddAuth.defaultProps = { type:"HTTPBasicAuth", user: "", password: "" };

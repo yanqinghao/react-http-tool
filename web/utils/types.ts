@@ -22,15 +22,17 @@ export interface URLString {
 export interface TypeString {
   type: string;
 }
-
-export interface ConfigType {
-  method?: string;
-  url?: string;
+export interface ParamType {
   data?: KeyValueType[];
   json?: KeyValueType[];
   params?: KeyValueType[];
   headers?: KeyValueType[];
   cookies?: KeyValueType[];
+}
+export interface ConfigType {
+  method?: string;
+  url?: string;
+  requestData?: ParamType;
   auth?: AuthType;
   user?: string;
   password?: string;
