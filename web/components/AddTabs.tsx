@@ -24,19 +24,26 @@ export default function AddTabs(props: PropsType) {
         <TabPane tab={e} key={i}>
           {props.config.requestData === undefined ? (
             <AddParam id={props.id} type={e} />
-          ) : props.config.requestData[e] === undefined ? (
+          ) : props.config.requestData === undefined ? (
             <AddParam id={props.id} type={e} />
           ) : (
             <AddParam
               id={props.id}
               type={e}
-              data={props.config.requestData[e]}
+              data={props.config.requestData}
             />
           )}
         </TabPane>
       ))}
       <TabPane tab="authorization" key="6">
-        <AddAuth />
+        {props.config.auth === undefined ? (
+          <AddAuth
+            id={props.id}
+            auth={{ authType: "HTTPBasicAuth", user: "", password: "" }}
+          />
+        ) : (
+          <AddAuth id={props.id} auth={props.config.auth} />
+        )}
       </TabPane>
     </Tabs>
   );

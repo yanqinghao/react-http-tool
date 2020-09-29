@@ -1,4 +1,9 @@
-import { ADD_CONFIG, DEL_CONFIG, SET_CONFIG } from "../actionTypes";
+import {
+  ADD_CONFIG,
+  DEL_CONFIG,
+  SET_CONFIG,
+  SEND_CONFIG,
+} from "../actionTypes";
 import { StateConfigs, ConfigType } from "../../../utils/types";
 import { v4 as uuidv4 } from "uuid";
 
@@ -47,6 +52,9 @@ export default function (
           ...filteredData,
         },
       };
+    }
+    case SEND_CONFIG: {
+      console.log(state);
     }
     default:
       return state;

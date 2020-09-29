@@ -10,9 +10,9 @@ export interface KeyValueList {
 }
 
 export interface AuthType {
-  type: string;
-  user: string;
-  password: string;
+  authType?: string;
+  user?: string;
+  password?: string;
 }
 
 export interface URLString {
@@ -34,8 +34,6 @@ export interface ConfigType {
   url?: string;
   requestData?: ParamType;
   auth?: AuthType;
-  user?: string;
-  password?: string;
 }
 
 export interface StateConfigs {
