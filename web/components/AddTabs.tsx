@@ -5,6 +5,7 @@ import AddParam from './params/AddParam'
 
 const { TabPane } = Tabs;
 
+
 interface TabType {
     params: [];
     auths: [];
