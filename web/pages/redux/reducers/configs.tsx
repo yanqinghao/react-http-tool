@@ -1,59 +1,33 @@
-import { ADD_CONFIG, DEL_CONFIG, SET_CONFIG } from "../actionTypes";
+import {
+  ADD_CONFIG,
+  DEL_CONFIG,
+  SET_CONFIG,
+  SEND_CONFIG,
+} from "../actionTypes";
+import { StateConfigs, ConfigType } from "../../../utils/types";
+import { v4 as uuidv4 } from "uuid";
 
-enum AuthType {
-  HTTPBasicAuth = "HTTPBasicAuth",
-  HTTPDigestAuth = "HTTPDigestAuth",
-  OAuth1 = "OAuth1",
-}
-
-interface KeyValueType {
-  key: string;
-  value: string;
-}
-
-export interface ConfigType {
-  id: number;
-  method: string;
-  url: string;
-  data?: KeyValueType[];
-  json?: KeyValueType[];
-  params?: KeyValueType[];
-  headers?: KeyValueType[];
-  cookies?: KeyValueType[];
-  auth?: AuthType;
-  user?: string;
-  password?: string;
-}
-
-interface stateConfigs {
-  allIds: number[];
-  configsbyId: ConfigType[];
-}
-
-const initialState: stateConfigs = {
-  allIds: [0],
-  configsbyId: [
-    {
-      id: 0,
-      method: "",
-      url: "",
-    },
-  ],
+let id = uuidv4();
+const initialState: StateConfigs = {
+  allIds: [id],
+  configsbyId: {
+    [id]: {},
+  },
 };
 
-export default function (state = initialState, action: any) {
+export default function (
+  state = initialState,
+  action: { type: string; payload: { id: string; content?: ConfigType } }
+) {
   switch (action.type) {
     case ADD_CONFIG: {
-      const { id, content } = action.payload;
+      const { id } = action.payload;
       return {
         ...state,
         allIds: [...state.allIds, id],
-        byIds: {
-          ...state.byIds,
-          [id]: {
-            content,
-            completed: false,
-          },
+        configsbyId: {
+          ...state.configsbyId,
+          [id]: {},
         },
       };
     }
@@ -61,27 +35,26 @@ export default function (state = initialState, action: any) {
       const { id, content } = action.payload;
       return {
         ...state,
-        byIds: {
-          ...state.byIds,
-          [id]: {
-            ...state.byIds[id],
-            completed: !state.byIds[id].completed,
-          },
+        allIds: [...state.allIds],
+        configsbyId: {
+          ...state.configsbyId,
+          [id]: { ...state.configsbyId[id], ...content },
         },
       };
     }
     case DEL_CONFIG: {
       const { id } = action.payload;
+      const { [id]: _, ...filteredData } = state.configsbyId;
       return {
         ...state,
-        byIds: {
-          ...state.byIds,
-          [id]: {
-            ...state.byIds[id],
-            completed: !state.byIds[id].completed,
-          },
+        allIds: [...state.allIds.filter((item) => item !== id)],
+        configsbyId: {
+          ...filteredData,
         },
       };
+    }
+    case SEND_CONFIG: {
+      console.log(state);
     }
     default:
       return state;

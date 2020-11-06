@@ -1,35 +1,51 @@
 import React from "react";
 import { Tabs } from "antd";
-import AddAuth from './params/AddAuth'
-import AddParam from './params/AddParam'
+import { connect } from "react-redux";
+import AddAuth from "./params/AddAuth";
+import AddParam from "./params/AddParam";
+import { ConfigType } from "../utils/types";
+import { setConfig } from "../pages/redux/actions";
 
 const { TabPane } = Tabs;
 
 
-interface TabType {
-    params: [];
-    auths: [];
+interface PropsType {
+  id: string;
+  config: ConfigType;
+  // setConfig: (id: string, content: ConfigType) => void;
 }
-export default function AddTabs(props: TabType) {
+
+interface TabType {
+  params: [];
+  auths: [];
+}
+export default function AddTabs(props: PropsType) {
   return (
     <Tabs defaultActiveKey="1" tabPosition="left" size="large">
-      <TabPane tab="Header" key="1">
-        <Headers />
-      </TabPane>
-      <TabPane tab="Data" key="2">
-        <Data />
-      </TabPane>
-      <TabPane tab="Json" key="3">
-        <Json />
-      </TabPane>
-      <TabPane tab="Params" key="4">
-        <Params />
-      </TabPane>
-      <TabPane tab="Cookies" key="5">
-        <Cookies />
-      </TabPane>
-      <TabPane tab="Authorization" key="6">
-        <Authorization />
+      {["header", "data", "json", "params", "cookies"].map((e, i) => (
+        <TabPane tab={e} key={i}>
+          {props.config.requestData === undefined ? (
+            <AddParam id={props.id} type={e} />
+          ) : props.config.requestData === undefined ? (
+            <AddParam id={props.id} type={e} />
+          ) : (
+            <AddParam
+              id={props.id}
+              type={e}
+              data={props.config.requestData}
+            />
+          )}
+        </TabPane>
+      ))}
+      <TabPane tab="authorization" key="6">
+        {props.config.auth === undefined ? (
+          <AddAuth
+            id={props.id}
+            auth={{ authType: "HTTPBasicAuth", user: "", password: "" }}
+          />
+        ) : (
+          <AddAuth id={props.id} auth={props.config.auth} />
+        )}
       </TabPane>
     </Tabs>
   );
