@@ -8,11 +8,13 @@ import { setConfig } from "../pages/redux/actions";
 
 const { TabPane } = Tabs;
 
+
 interface PropsType {
   id: string;
   config: ConfigType;
   // setConfig: (id: string, content: ConfigType) => void;
 }
+
 interface TabType {
   params: [];
   auths: [];
