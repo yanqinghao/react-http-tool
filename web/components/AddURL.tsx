@@ -16,6 +16,9 @@ function AddURL(props: PropsType) {
     console.log(e)
     props.setConfig(props.id, { url: e.target.value });
   };
+  const handleFocus = (e: any) => {
+    console.log(e)
+  };
   return (
     <FormItem label="请求链接" labelCol={{ span: 8 }} wrapperCol={{ span: 8 }}>
       <Input
@@ -25,6 +28,7 @@ function AddURL(props: PropsType) {
         name="inputURL"
         value={props.url}
         onChange={handleSetConfig}
+        onFocus={handleFocus}
       />
     </FormItem>
   );

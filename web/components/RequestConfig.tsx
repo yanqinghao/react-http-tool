@@ -2,6 +2,8 @@ import { Button } from "antd";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import AddItem from "./AddItem";
+import ShowInput from "./ShowInput";
+import ShowOutput from "./ShowOutput";
 import { ConfigType, StateConfigs } from "../utils/types";
 import { addConfig } from "../pages/redux/actions";
 
@@ -22,6 +24,8 @@ class RequestConfig extends Component<PropsType> {
   render() {
     return (
       <div>
+        <ShowInput />
+        <ShowOutput />
         {this.props.allIds.map((i) => (
           <AddItem key={i} id={i} config={this.props.configsbyId[i]} />
         ))}
