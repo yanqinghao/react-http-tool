@@ -24,8 +24,8 @@ class RequestConfig extends Component<PropsType> {
   render() {
     return (
       <div>
-        <ShowInput />
-        <ShowOutput />
+        {/* <ShowInput />
+        <ShowOutput /> */}
         {this.props.allIds.map((i) => (
           <AddItem key={i} id={i} config={this.props.configsbyId[i]} />
         ))}

@@ -30,9 +30,7 @@ function AddItem(props: PropsType) {
       ) : (
         <AddURL id={props.id} ip={props.config.ip}/>
       )}
-      <AddTabs id={props.id} config={props.config} />
       <Button onClick={handleDelConfig}>-</Button>
-      <Button>测试接口</Button>
     </div>
   );
 }
