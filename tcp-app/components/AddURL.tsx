@@ -17,9 +17,9 @@ function AddURL(props: PropsType) {
     console.log(e)
     props.setConfig(props.id, { ip: e.target.value });
   };
-  const handleSetPort = (e: any) => {
-    console.log(e)
-    props.setConfig(props.id, { ip: e.target.value });
+  const handleSetPort = (value: any) => {
+    console.log(value)
+    props.setConfig(props.id, { port: value });
   };
   return (
     <FormItem label="请求链接" labelCol={{ span: 8 }} wrapperCol={{ span: 8 }}>

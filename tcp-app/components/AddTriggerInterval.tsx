@@ -12,9 +12,9 @@ interface PropsType {
   setConfig: (id: string, content: ConfigType) => void;
 }
 function AddTriggerInterval(props: PropsType) {
-  const handleSetConfig = (e: any) => {
-    console.log(e)
-    props.setConfig(props.id, { ip: e.target.value });
+  const handleSetConfig = (value: any) => {
+    console.log(value)
+    props.setConfig(props.id, { ip: value });
   };
   return (
     <FormItem label="触发间隔" labelCol={{ span: 8 }} wrapperCol={{ span: 8 }}>
