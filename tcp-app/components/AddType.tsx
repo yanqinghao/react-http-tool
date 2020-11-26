@@ -18,14 +18,15 @@ function AddType(props: PropsType) {
   };
   return (
     <FormItem
-      label="选择请求方式"
-      labelCol={{ span: 8 }}
+      style={{ marginTop:100 }}
+      label="请求方式"
+      labelCol={{ span: 5 }}
       wrapperCol={{ span: 8 }}
     >
       <Select
         size="large"
         defaultValue="send"
-        style={{ width: 100 }}
+        style={{ width: 250, margin: 10 }}
         value={props.type}
         onChange={handleSetConfig}
       >

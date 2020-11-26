@@ -29,7 +29,6 @@ class RequestConfig extends Component<PropsType> {
         {this.props.allIds.map((i) => (
           <AddItem key={i} id={i} config={this.props.configsbyId[i]} />
         ))}
-        <Button onClick={this.handleAddConfig}>+</Button>
       </div>
     );
   }

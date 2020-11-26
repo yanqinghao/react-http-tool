@@ -22,10 +22,10 @@ function AddURL(props: PropsType) {
     props.setConfig(props.id, { port: value });
   };
   return (
-    <FormItem label="请求链接" labelCol={{ span: 8 }} wrapperCol={{ span: 8 }}>
+    <FormItem label="请求链接" style={{marginTop: 50}} labelCol={{ span: 5 }} wrapperCol={{ span: 8 }}>
       <Input
         size="large"
-        style={{ width: 500 }}
+        style={{ width: 300, margin: 10 }}
         placeholder="请输入请求URL"
         name="inputIP"
         value={props.ip}
@@ -33,7 +33,7 @@ function AddURL(props: PropsType) {
       />
       <InputNumber
         size="large"
-        style={{ width: 500 }}
+        style={{ width: 100}}
         placeholder="PORT"
         name="inputPort"
         defaultValue={props.port}
