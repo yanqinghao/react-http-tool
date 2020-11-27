@@ -20,7 +20,7 @@ function AddTriggerInterval(props: PropsType) {
     <FormItem label="触发间隔" labelCol={{ span: 8 }} wrapperCol={{ span: 8 }}>
       <InputNumber
         size="large"
-        style={{ width: 500 }}
+        style={{ width: 150 }}
         placeholder="PORT"
         name="inputPort"
         defaultValue={props.triggerInterval}
